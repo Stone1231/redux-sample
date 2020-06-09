@@ -3,16 +3,18 @@ import { setVisibilityFilter } from '../actions'
 import Link from '../components/Link'
 
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilterMvc
+  active: ownProps.filter === state.visibilityFilterUndo
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  setFilter: () => {
+  onClick: () => {
     dispatch(setVisibilityFilter(ownProps.filter))
   }
 })
 
-export default connect(
+const FilterLink = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Link)
+
+export default FilterLink

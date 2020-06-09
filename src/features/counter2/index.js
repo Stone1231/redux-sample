@@ -1,19 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 import Counter from './components/Counter'
-// import counter from './reducers'
+import { useSelector, useDispatch } from 'react-redux';
 
-// const store = createStore(counter)
-import store from '../../app/store';
-
-export default (
-    <Counter
-        // value={store.getState()}
-        onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-        onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />
-)
-
-// export default render()
-// store.subscribe(render)
+const selectValue = state => state.counter2;
+export default function CounterApp() {
+    const value = useSelector(selectValue);
+    const dispatch = useDispatch();
+    return (
+        <Counter
+            value={value}
+            onIncrement={() => dispatch({ type: 'INCREMENT' })}
+            onDecrement={() => dispatch({ type: 'DECREMENT' })}
+        />
+    )
+}

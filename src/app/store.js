@@ -1,36 +1,37 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-
-import counter2Reducer from '../features/counter2/reducers'
-import {combineReducers, createStore} from "redux";
-
-// import todoReducer from "../features/todos/reducers/index";
-// import todomvcReducer from "../features/todomvc/reducers/index";
-// import visibilityFilter from "../features/todos/reducers/visibilityFilter";
-// import todos from "../features/todos/reducers";
-
+// import { configureStore } from '@reduxjs/toolkit';
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import thunk from 'redux-thunk'
+import counter from '../features/counter/counterSlice';
+import counter2 from '../features/counter2/reducers/index';
 import {todos, visibilityFilter} from "../features/todos/reducers/index";
-import {todosMvc, visibilityFilterMvc} from "../features/todomvc/reducers/index";
-
-// const reducer= {
-//   counter: counterReducer
-// }
-// export default configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//     counter2: counter2Reducer,
-//     todos: todos,
-//     visibilityFilter:visibilityFilter,
-//   },
-// });
+import {todos as todosMvc, visibilityFilter as visibilityFilterMvc} from "../features/todomvc/reducers/index";
+import {todos as todosUndo, visibilityFilter as visibilityFilterUndo} from "../features/todos-with-undo/reducers/index";
+import {cart, products} from "../features/shopping-cart/reducers/index";
+import treeView from "../features/tree-view/reducers/index";
 
 const rootReducer = combineReducers({
+    counter,
+    counter2,
     todos,
     visibilityFilter,
-    // todosMvc,
-    // visibilityFilterMvc,
+    todosMvc,
+    visibilityFilterMvc,
+    todosUndo,
+    visibilityFilterUndo,
+    cart,
+    products,
+    treeView,
 })
 
-const store = createStore(rootReducer)
+const middleware = [ thunk ];
+// if (process.env.NODE_ENV !== 'production') {
+//     middleware.push(createLogger());
+// }
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(...middleware)
+)
+// const store = createStore(rootReducer)
 
 export default store;

@@ -4,6 +4,9 @@ import { Counter } from './features/counter/Counter';
 import Counter2 from './features/counter2/index';
 import Todos from './features/todos/components/App';
 import Todomvc from './features/todomvc/components/App';
+import TodoUndo from './features/todos-with-undo/components/App';
+import Shopping from './features/shopping-cart/index';
+import Node from './features/tree-view/index'
 
 function SidebarTitle(props) {
   let style = { color: "blue" };
@@ -25,7 +28,7 @@ const data = [
       {
         path: "/counter2",
         title: "Counter 2",
-        main: () => Counter2,
+        main: () => <Counter2 />,
       },
       {
         path: "/todos",
@@ -34,8 +37,23 @@ const data = [
       },
       {
         path: "/todomvc",
-        title: "Todo MVC",
+        title: "Todos MVC",
         main: () => <Todomvc />,
+      },
+      {
+        path: "/todoundo",
+        title: "Todos undo",
+        main: () => <TodoUndo />,
+      },
+      {
+        path: "/Shopping",
+        title: "Shopping Cart",
+        main: () => <Shopping />,
+      },
+      {
+        path: "/tree",
+        title: "Tree View",
+        main: () => Node,
       }
     ],
   },
