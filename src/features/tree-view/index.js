@@ -22,5 +22,5 @@ const tree = generateTree()
 // )
 
 export default (
-    <Node id={0} {counter, parentId, childIds }={tree}  />
+    <Node id={0} counter={tree.counter} parentId={tree.parentId} childIds={tree.childIds} />
 )
