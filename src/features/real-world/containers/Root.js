@@ -9,16 +9,17 @@ import { Route } from 'react-router-dom'
 import App from './App'
 import UserPage from './UserPage'
 import RepoPage from './RepoPage'
+import { rootPath } from '../path'
 
 const Root = () => (
     <div>
-      <Route path="/" component={App} />
-      <Route path="/:login/:name" component={RepoPage} />
-      <Route path="/:login" component={UserPage} />
+      <Route path={"/" + rootPath} component={App} />
+      <Route path={"/" + rootPath + "/:login/:name"} component={RepoPage} />
+      <Route path={"/" + rootPath + "/:login"} component={UserPage} />
     </div>
 )
 
-Root.propTypes = {
-  store: PropTypes.object.isRequired,
-}
+// Root.propTypes = {
+//   store: PropTypes.object.isRequired,
+// }
 export default Root

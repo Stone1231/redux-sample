@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import {rootPath} from "../path";
 
 const User = ({ user }) => {
   const { login, avatarUrl, name } = user
 
   return (
     <div className="User">
-      <Link to={`/${login}`}>
+      <Link to={`/${rootPath}/${login}`}>
         <img src={avatarUrl} alt={login} width="72" height="72" />
         <h3>
           {login} {name && <span>({name})</span>}

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Explore from '../components/Explore'
 import { resetErrorMessage } from '../actions'
+import { rootPath } from '../path'
 
 class App extends Component {
   static propTypes = {
@@ -23,7 +24,9 @@ class App extends Component {
   }
 
   handleChange = nextValue => {
-    this.props.history.push(`/${nextValue}`)
+    // this.props.history.push(`/${nextValue}`)
+    this.props.history.push(`/${rootPath}/${nextValue}`)
+
   }
 
   renderErrorMessage() {
@@ -59,7 +62,7 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   errorMessage: state.errorMessage,
-  inputValue: ownProps.location.pathname.substring(1)
+  inputValue: ownProps.location.pathname.split(rootPath +"/")[1]
 })
 
 export default withRouter(connect(mapStateToProps, {
