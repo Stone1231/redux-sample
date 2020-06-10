@@ -6,7 +6,9 @@ import Todos from './features/todos/components/App';
 import Todomvc from './features/todomvc/components/App';
 import TodoUndo from './features/todos-with-undo/components/App';
 import Shopping from './features/shopping-cart/index';
-import Node from './features/tree-view/index'
+import Node from './features/tree-view/index';
+import Async from './features/async/containers/App';
+import RealWorld from './features/real-world/containers/Root';
 
 function SidebarTitle(props) {
   let style = { color: "blue" };
@@ -54,6 +56,16 @@ const data = [
         path: "/tree",
         title: "Tree View",
         main: () => Node,
+      },
+      {
+        path: "/async",
+        title: "Async",
+        main: () => <Async />,
+      },
+      {
+        path: "/realworld",
+        title: "Real World",
+        main: () => <RealWorld />,
       }
     ],
   },

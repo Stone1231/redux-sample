@@ -1,4 +1,5 @@
 import { INCREMENT, ADD_CHILD, REMOVE_CHILD, CREATE_NODE, DELETE_NODE } from '../actions'
+import generateTree from './generateTree'
 
 const childIds = (state, action) => {
   switch (action.type) {
@@ -47,7 +48,9 @@ const deleteMany = (state, ids) => {
   return state
 }
 
-export default (state = {}, action) => {
+const tree = generateTree();
+
+export default (state = tree, action) => {
   const { nodeId } = action
   if (typeof nodeId === 'undefined') {
     return state

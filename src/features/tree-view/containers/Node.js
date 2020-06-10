@@ -66,7 +66,7 @@ export class Node extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  return state[ownProps.id]
+  return state.treeView[ownProps.id]
 }
 
 const ConnectedNode = connect(mapStateToProps, actions)(Node)
