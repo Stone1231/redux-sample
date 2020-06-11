@@ -50,8 +50,7 @@ export function Counter() {
         </button>
         <button
           className={styles.asyncButton}
-          onClick={() => incrementAsync(Number(incrementAmount) || 0)}
-          // onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
+          onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
           Add Async
         </button>
